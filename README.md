@@ -33,7 +33,7 @@ This repository implements an empirical framework to examine whether supervised 
 In systematic trading research, models frequently report strong historical performance that fails out of sample due to target overlap leakage, in-sample preprocessing contamination, or unmodeled execution friction.
 
 This project implements an end-to-end backtesting and walk-forward evaluation platform adhering to the partitioning principles outlined by Marcos López de Prado (*Advances in Financial Machine Learning*):
-1. **Purged Expanding-Window Walk-Forward Protocol**: 23 strictly out-of-sample non-overlapping evaluation folds spanning October 2020 through July 2026 (1,427 trading sessions).
+1. **Purged Expanding-Window Walk-Forward Protocol**: 23 strictly out-of-sample non-overlapping evaluation folds spanning October 2020 through July 2026 (1,427 aggregate out-of-sample trading sessions across 23 folds).
 2. **Purge Gaps**: A 5-session purge gap preceding each test fold to prevent overlap between the 5-day forward-return target horizon and test-period prices.
 3. **Execution Modeling**: Signals generated after candle $t$ close execute at candle $t+1$ open, incorporating fixed 5 bps transaction fees and 2 bps adverse execution slippage.
 4. **Statistical Diagnostics**: 1,000 moving-block bootstrap resamples, 1,000 block-permutation tests, Holm step-down multiple testing adjustments, Brier scores, and probability calibration curves.
@@ -72,7 +72,7 @@ All strategies evaluated under identical initial capital ($100,000), next-open e
 ### Key Diagnostic Observations
 
 - **ROC-AUC & Ranking Ability**: Out-of-sample ROC-AUC ranged between 0.48 and 0.54 across folds and assets. Under block permutation of labels, departures from 0.50 were not statistically significant after Holm correction.
-- **Drawdown Behavior**: While trailing Buy & Hold on total return, the indicator strategy and Random Forest reduced maximum drawdowns by 30% to 50% relative to 100% equity exposure by de-allocating capital during volatile periods.
+- **Drawdown Behavior**: While trailing Buy & Hold on total return, the indicator strategy and Random Forest reduced maximum drawdowns by approximately 30% to 50% relative to the 100%-equity benchmark by de-allocating capital during volatile periods.
 - **Trade Accounting**: Trades are aggregated into flat-to-flat position episodes to avoid counting individual rebalancing executions as separate round trips.
 
 ---
