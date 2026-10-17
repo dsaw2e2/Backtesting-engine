@@ -1,0 +1,7 @@
+"""Shared defaults for reproducible research runs."""
+
+TRADING_DAYS_PER_YEAR = 252
+DEFAULT_INITIAL_CAPITAL = 100_000.0
+DEFAULT_FEE_RATE = 0.0005
+DEFAULT_SLIPPAGE_BPS = 2.0
+

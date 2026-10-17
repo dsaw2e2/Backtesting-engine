@@ -1,0 +1,25 @@
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+
+# Development artifacts & sandboxes
+.cache/
+.codex/
+.agents/
+work/
+
+# Research outputs (regenerated via scripts)
+outputs/
+
+# Operating system artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
